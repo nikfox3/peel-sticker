@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg height="0" width="0">
+    <defs>
+
+      <filter id=pointLight>
+        <feGaussianBlur stdDeviation="1" result="blur" />
+        <feSpecularLighting result="spec" in="blur" specularExponent="100" specularConstant="0.1" lightingColor="white">
+          <fePointLight x=100 y=100 z="300" />
+        </feSpecularLighting>
+        <feComposite in="spec" in2="SourceGraphic" operator="screen" result="lit" />
+        <feComposite in="lit" in2="SourceAlpha" operator="in" />
+      </filter>
+
+      <filter id=pointLightFlipped>
+        <feGaussianBlur stdDeviation="10" result="blur" />
+        <feSpecularLighting result="spec" in="blur" specularExponent="100" specularConstant="0.7" lightingColor="white">
+          <fePointLight x=100 y=100 z="300" id="fePointLightFlipped" />
+        </feSpecularLighting>
+        <feComposite in="spec" in2="SourceGraphic" operator="screen" result="lit" />
+        <feComposite in="lit" in2="SourceAlpha" operator="in" />
+      </filter>
+
+      <filter id="dropShadow">
+        <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="black" flood-opacity="0.6" />
+      </filter>
+
+      <!-- STROKE EFFECT (1/2) -->
+      <!-- Uncomment the outerStroke filter to add a stroke effect -->
+      <!-- Set the stroke size by changing the radius value in feMorphology -->
+      <!-- For strokes to work, you need to update expandAndFill filter too -->
+
+      <!-- <filter id="outerStroke">
+                <feMorphology operator="dilate" radius="10" in="SourceAlpha" result="expanded" />
+                <feColorMatrix in="expanded" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"
+                result="whiteExpanded" />
+                <feComposite operator="xor" in="whiteExpanded" in2="SourceAlpha" result="outerStroke" />
+                <feComposite operator="over" in="SourceGraphic" in2="outerStroke" />
+            </filter> -->
+
+      <filter id="expandAndFill">
+        <feOffset dx="0" dy="0" in="SourceAlpha" result="shape" />
+        <!-- STROKE EFFECT (2/2) -->
+        <!-- Uncomment the feMorphology filter to add a stroke effect -->
+        <!-- <feMorphology operator="dilate" radius="10" in="SourceAlpha" result="shape" /> -->
+
+        <feFlood flood-color="rgb(179, 179, 179)" result="flood" />
+        <feComposite operator="in" in="flood" in2="shape" />
+      </filter>
+    </defs>
+  </svg>
+
+  <style>
+
+  </style>
+
+  <main style="width: 100dvw; height: 100dvh; display: flex; justify-content: center; align-items: center;">
+    <div class="draggable">
+      <div class="sticker-container">
+
+        <div class="sticker-main">
+          <div class="sticker-lighting">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/256px-Figma-logo.svg.png" 
+     class="sticker-image" 
+     draggable="false" 
+     oncontextmenu="return false" />
+         
+
+        <div class="shadow">
+          <div class="flap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/256px-Figma-logo.svg.png" 
+     class="shadow-image" 
+     draggable="false" 
+     oncontextmenu="return false" />
+          </div>
+        </div>
+
+        <div class="flap">
+          <div class="flap-lighting">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/256px-Figma-logo.svg.png" 
+     class="flap-image" 
+     draggable="false" 
+     oncontextmenu="return false" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+</main>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
