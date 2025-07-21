@@ -86,7 +86,7 @@
 body {
   padding: 0;
   margin: 0;
-  background-image: linear-gradient(to bottom, #302f31, #1a1a1a);
+  background: transparent;
 }
 
 .sticker-container {
