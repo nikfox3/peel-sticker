@@ -86,7 +86,7 @@
 body {
   padding: 0;
   margin: 0;
-  background: transparent;
+  background: transparent !important;
 }
 
 .sticker-container {
@@ -221,4 +221,8 @@ body {
 .shadow-image,
 .flap-image {
   width: 200px;
+}
+
+html {
+  background: transparent;
 }
